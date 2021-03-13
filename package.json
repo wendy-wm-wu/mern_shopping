@@ -23,6 +23,7 @@
   "homepage": "https://github.com/wendy-wm-wu/mern_shopping#readme",
   "dependencies": {
     "concurrently": "^6.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.0"
   },
