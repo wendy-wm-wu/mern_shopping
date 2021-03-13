@@ -1,4 +1,15 @@
-// export interface IAppNavbar {
+export interface IItem {
+  _id?: string;
+  name: string;
+}
 
-// }
-export {}
+export interface IExistingItem {
+  _id: string;
+  name: string;
+}
+
+export interface IShoppingList {
+  item: {
+    items: IExistingItem[];
+  }
+}
