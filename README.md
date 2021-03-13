@@ -1,1 +1,1 @@
-# mern_shopping
+# MERN Shopping List
