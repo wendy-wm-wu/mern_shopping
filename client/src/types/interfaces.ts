@@ -1,10 +1,19 @@
+import React from "react";
+
+export interface ITarget {
+  target: {
+    value: React.SetStateAction<string>;
+  };
+  preventDefault(): void;
+}
+
 export interface IItem {
-  id?: string;
+  _id?: string;
   name: string;
 }
 
 export interface IExistingItem {
-  id: string;
+  _id: string;
   name: string;
 }
 
@@ -13,10 +22,16 @@ export interface IShoppingList {
     items: IExistingItem[];
   };
   getItems(): void;
+  deleteItem(id: string): void;
 }
 
 export interface IState {
   items: IItem[];
+  loading: boolean;
+}
+
+export interface IItemModal {
+  addItem(item: IItem): void;
 }
 
 export interface IAction {
