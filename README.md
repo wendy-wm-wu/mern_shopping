@@ -1,1 +1,1 @@
-# MERN Shopping List 
+# MERN Shopping list 
