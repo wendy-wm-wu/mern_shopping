@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-const db = require('./config/keys.js').mongoURI;
+const db = require('./config/keys').mongoURI;
 
 mongoose
   .connect(db, {
