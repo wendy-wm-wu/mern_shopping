@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+require('dotenv').config();
 
 const items = require('./routes/api/items');
 
@@ -9,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-const db = require('./config/keys').mongoURI;
+const db = process.env.MONGO_URL;
 
 mongoose
   .connect(db, {
