@@ -32,10 +32,10 @@ router.delete('/:id', auth, (req, res) => {
   Item.findById(req.params.id)
     .then(item => {
       item.remove()
-        .then(() => res.json({success: true, message: "item deleted"}))
-        .catch(err => res.status(404).json({success: false, message: "item was not deleted"}));
+        .then(() => res.json({success: true, message: "Item deleted"}))
+        .catch(err => res.status(404).json({success: false, message: "Item was not deleted"}));
     })
-    .catch(err => res.status(404).json({succes: false, message: "item not found"}));
+    .catch(err => res.status(404).json({succes: false, message: "Item not found"}));
 });
 
 module.exports = router;

@@ -30,6 +30,10 @@ export interface IRegisterModal extends IAuthForm {
   register(user: IUser): void;
 }
 
+export interface ILoginModal extends IAuthForm {
+  login(user: IUser): void;
+}
+
 export interface IConfigHeaders {
   headers: {
     [index: string]: string;
@@ -77,6 +81,14 @@ export interface IShoppingList {
   };
   getItems(): void;
   deleteItem(id: string): void;
+}
+
+// NAVBAR
+export interface IAppNavbar {
+  auth?: {
+    isAuthenticated: boolean;
+    user: IUser;
+  };
 }
 
 // FLUX

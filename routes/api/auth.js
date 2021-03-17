@@ -16,20 +16,20 @@ router.post('/login', (req, res) => {
 
   // simple validation
   if (!email || !password) {
-    return res.status(400).json({ message: "please enter all fields" });
+    return res.status(400).json({ message: "Please enter all fields" });
   }
 
   // check for existing user
   User.findOne({ email })
     .then(user => {
       if (!user) {
-        return res.status(400).json({ success: false, message: "user does not exist" });
+        return res.status(400).json({ success: false, message: "User does not exist" });
       }
       // validate password
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (!isMatch) {
-            return res.status(400).json({ success: false, message: "invalid credentials" });
+            return res.status(400).json({ success: false, message: "Invalid credentials" });
           }
           const payload = { id: user.id };
           jwt.sign(payload, jwtSecret, { expiresIn: 3600 }, (err, token) => {
@@ -47,7 +47,7 @@ router.post('/login', (req, res) => {
         })
       
     })
-    .catch(err => res.status(400).json({ success: false, message: "could not verify user" }));
+    .catch(err => res.status(400).json({ success: false, message: "Could not verify user" }));
 });
 
 // @route  GET api/auth/user
@@ -57,7 +57,7 @@ router.get('/user', auth, (req, res) => {
   User.findById(req.user.id)
     .select('-password')
     .then(user => res.status(200).json(user))
-    .catch(err => res.status(400).json({ success: false, message: "could not verify user" }));
+    .catch(err => res.status(400).json({ success: false, message: "Could not verify user" }));
 });
 
 module.exports = router;

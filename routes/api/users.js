@@ -15,14 +15,14 @@ router.post('/register', (req, res) => {
 
   // simple validation
   if (!name || !email || !password) {
-    return res.status(400).json({ success: false, message: "please enter all fields" });
+    return res.status(400).json({ success: false, message: "Please enter all fields" });
   }
 
   // check for existing user
   User.findOne({ email })
     .then(user => {
       if (user) {
-        return res.status(400).json({ success: false, message: "user already exists" });
+        return res.status(400).json({ success: false, message: "User already exists" });
       } 
       const newUser = new User({
         name,
@@ -57,7 +57,7 @@ router.post('/register', (req, res) => {
         });
       });
     })
-    .catch(err => res.status(400).json({ success: false, message: "could not register user" }));
+    .catch(err => res.status(400).json({ success: false, message: "Could not register user" }));
 });
 
 
