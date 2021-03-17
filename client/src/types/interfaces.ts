@@ -67,9 +67,10 @@ export interface IItem {
 
 export interface IItemModal {
   addItem(item: IItem): void;
+  isAuthenticated: boolean;
 }
 
-export interface IItemReduxProps {
+export interface IItemReduxProps extends IAuthReduxProps {
   item: {
     items: IExistingItem[];
   }
@@ -81,6 +82,7 @@ export interface IShoppingList {
   };
   getItems(): void;
   deleteItem(id: string): void;
+  isAuthenticated: boolean;
 }
 
 // NAVBAR

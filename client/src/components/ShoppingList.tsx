@@ -7,6 +7,7 @@ import { IShoppingList, IItemReduxProps } from '../types/interfaces';
 
 const ShoppingList = ({
   item,
+  isAuthenticated,
   getItems,
   deleteItem
 }: IShoppingList) => {
@@ -28,14 +29,16 @@ const ShoppingList = ({
           {items.map(({ _id, name }) => (
             <CSSTransition key={_id} timeout={500} classNames="fade">
               <ListGroupItem>
-                <Button
-                  className="remove-btn"
-                  color="danger"
-                  size="sm"
-                  onClick={() => handleDelete(_id)}
-                >
-                  &times;
-                </Button>
+                { isAuthenticated ? (
+                  <Button
+                    className="remove-btn"
+                    color="danger"
+                    size="sm"
+                    onClick={() => handleDelete(_id)}
+                  >
+                    &times;
+                  </Button>
+                ) : null }
                 {name}
               </ListGroupItem>
             </CSSTransition>
@@ -48,6 +51,7 @@ const ShoppingList = ({
 
 const mapStateToProps = (state: IItemReduxProps) => ({
   item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList);

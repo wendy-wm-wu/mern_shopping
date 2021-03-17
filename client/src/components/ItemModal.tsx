@@ -5,7 +5,8 @@ import { addItem } from '../flux/actions/itemActions';
 import { ITarget, IItemModal, IItemReduxProps } from '../types/interfaces';
 
 const ItemModal = ({
-  addItem
+  addItem,
+  isAuthenticated
 }: IItemModal) => {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState('');
@@ -30,13 +31,17 @@ const ItemModal = ({
 
   return (
     <div>
-      <Button
-        color="dark"
-        style={{ marginBottom: '2rem' }}
-        onClick={handleToggle}
-      >
-        Add Item
-      </Button>
+      { isAuthenticated ? (
+        <Button
+          color="dark"
+          style={{ marginBottom: '2rem' }}
+          onClick={handleToggle}
+        >
+          Add Item
+        </Button>
+      ) : (
+        <h4 className="mb-3 ml-4">Please log in to manage items.</h4>
+      )}
       <Modal isOpen={modal} toggle={handleToggle}>
         <ModalHeader toggle={handleToggle}>Add to Shopping List</ModalHeader>
         <ModalBody>
@@ -63,6 +68,7 @@ const ItemModal = ({
 
 const mapsStateToProps = (state: IItemReduxProps) => ({
   item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapsStateToProps, { addItem })(ItemModal);
