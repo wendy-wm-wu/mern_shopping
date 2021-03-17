@@ -1,9 +1,14 @@
 import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from '../actions/types';
-import { IAction, IState } from '../../types/interfaces';
+import { IAction, IItem } from '../../types/interfaces';
 
 const initialState = {
   items: [],
   loading: false
+}
+
+export interface IState {
+  items: IItem[];
+  loading: boolean;
 }
  
 export default function(state: IState = initialState, action: IAction) {

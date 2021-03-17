@@ -25,11 +25,6 @@ export interface IShoppingList {
   deleteItem(id: string): void;
 }
 
-export interface IState {
-  items: IItem[];
-  loading: boolean;
-}
-
 export interface IItemModal {
   addItem(item: IItem): void;
 }
@@ -43,4 +38,14 @@ export interface IItemReduxProps {
   item: {
     items: IExistingItem[];
   }
+}
+
+export interface IConfigHeaders {
+  headers: {
+    [index: string]: string;
+  }
+}
+
+export interface IMsg {
+  msg: string | any;
 }
