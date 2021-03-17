@@ -35,6 +35,7 @@ export default function(state: IState = initialState, action: any) {
       return {
         ...state,
         ...action.payload,
+        token: action.payload.access_token,
         isAuthenticated: true,
         isLoading: false
       };
